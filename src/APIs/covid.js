@@ -1,3 +1,4 @@
+//File not used, but was part of the template, so it stayed
 import axios from "axios";
 
 //documentation @https://covidtracking.com/data/api

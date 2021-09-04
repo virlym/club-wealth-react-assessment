@@ -1,6 +1,7 @@
 import React from "react";
 
 function Table(props) {
+  //populate the table with the provided information
   return (
     <tbody>
       <tr className="header, section-head">

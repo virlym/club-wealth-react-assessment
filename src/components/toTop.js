@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-function ToTop(props) {
+function ToTop() {
 
+  //state to keep track of the arrow visibility
   const [isVisible, setIsVisible] = useState(false);
 
+  //on page load, create an action listener for scrolling
   useEffect(function() {
     window.addEventListener("scroll", toggleVisibility);
   }, []);
 
-
+  //if you scroll down far enough, set the arrow's visibility to true. Or false if you've moved up enough
   function toggleVisibility(){
     if (window.pageYOffset > 300) {
       setIsVisible(true);
@@ -17,6 +19,7 @@ function ToTop(props) {
     }
   }
 
+  //bring the page back to the top
   function scrollToTop(){
     window.scrollTo({
       top: 0,

@@ -3,26 +3,28 @@ import SearchBar from "../components/searchBar.js";
 import Table from "../components/table.js";
 
 function UserDirectory(props) {
-
+  //state for search term and table from the user data
   const [searchState, setSearchState] = useState({
     searchTerm: "",
-    tableList: [],
-    sortedTable: [],
-    filteredTable: []
+    tableList: []
   });
 
+  //on page load, when the userState changes, or the searchTerm changes, fill out the table
   useEffect(function() {
     if(props.userState.userList.length > 0){
       setTableList(searchState.searchTerm);
     }
   }, [props.userState, searchState.searchTerm]);
 
+  //set the table data based on the search term
   function setTableList(search){
     const data = props.userState.userList;
     const newArray2 = [];
       for(let i = 0; i < data.length; i++){
-        const name = `${data[i].firstName} ${data[i].lastName}`;
-        if((search === "") || (name.indexOf(search) > -1)){
+        //combine the first and last names as lower case letters for easier searching
+        const name = `${data[i].firstName.toLowerCase()} ${data[i].lastName.toLowerCase()}`;
+        //if the name can be added to the filtered table, do so
+        if((search === "") || (name.indexOf(search.toLowerCase()) > -1)){
         newArray2.push(
           <tr key={i.toString()}>
             <td> <img src={data[i].pic} alt="pic{i}" /> </td>
@@ -36,9 +38,11 @@ function UserDirectory(props) {
         );
       }
     }
+    //set the table state
     setSearchState({ ...searchState, tableList: {data: newArray2} });
   }
 
+  //sort the table based on the column name that was clicked on (hidden QoL)
   function sortTable(column){
     let change = false;
     // sort by id
@@ -141,6 +145,7 @@ function UserDirectory(props) {
         });
       }
     }
+    //after sorting is done, repopulate the table
     setTableList(searchState.searchTerm);
   }
 

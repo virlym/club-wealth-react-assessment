@@ -1,3 +1,4 @@
+//File not used, but was part of the template, so it stayed
 import React, { useState, useEffect } from "react";
 import user from "../APIs/user";
 import cats from "../APIs/cats";

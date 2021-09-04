@@ -2,9 +2,9 @@ import React from "react";
 
 function Searchbar(props) {
 
+  //track the user's input into the filter bar and change the state accordingly
   function handleSearchInputChange(event){
     event.preventDefault();
-    console.log(event.target.value);
     const value = event.target.value;
     props.setSearchState({ ...props.searchState, searchTerm: value});
   }
