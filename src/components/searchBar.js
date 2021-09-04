@@ -21,7 +21,6 @@ function Searchbar(props) {
                   type="text"
                   placeholder="Filter by name"
               />
-              {/* <input type="submit" className="input-group-append input-group-text" value="Search" /> */}
           </form>
       </div>
     </div>

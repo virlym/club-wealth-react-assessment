@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import UserAPI from "./APIs/user.js";
 import CountryAPI from "./APIs/countries.js";
 import CatAPI from "./APIs/cats.js";  
+import ToTop from "./components/toTop.js";
 
 function App() {
   
@@ -82,6 +83,7 @@ function App() {
         <body className="bg-dark text-light"/>
       </Helmet>
       <UserDirectory userState={userState}/>
+      <ToTop />
       <footer>
         <small> &copy; 2021 Virlym di Aunel</small>
       </footer>
