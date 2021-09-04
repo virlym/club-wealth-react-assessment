@@ -13,16 +13,9 @@ function UserDirectory(props) {
 
   useEffect(function() {
     if(props.userState.userList.length > 0){
-      setTableList("");
+      setTableList(searchState.searchTerm);
     }
-  }, [props.userState]);
-
-  function handleSearchInputChange(event){
-    event.preventDefault();
-    const value = event.target.value;
-    const name = event.target.name;
-    setSearchState({ ...searchState, [name]: value});
-  }
+  }, [props.userState, searchState.searchTerm]);
 
   function setTableList(search){
     const data = props.userState.userList;
@@ -45,8 +38,6 @@ function UserDirectory(props) {
         newKey.push(i.toString());
       }
     }
-    console.log(newArray2);
-    console.log(newKey);
     setSearchState({ ...searchState, tableList: {data: newArray2, key: newKey} });
   }
 
@@ -64,7 +55,7 @@ function UserDirectory(props) {
         </div>
       </div>
 
-      <SearchBar handleSearchInputChange={handleSearchInputChange} searchState={searchState}/>
+      <SearchBar searchState={searchState} setSearchState={setSearchState} setTableList={setTableList}/>
 
       <br />
 
