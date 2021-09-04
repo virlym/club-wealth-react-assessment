@@ -8,12 +8,8 @@ import CatAPI from "./APIs/cats.js";
 
 function App() {
   
-  const [searchState, setSearchState] = useState({
-    searchTerm: "",
-    userList: [],
-    tableList: [],
-    sortedTable: [],
-    filteredTable: []
+  const [userState, setUserState] = useState({
+    userList: []
   });
 
   useEffect(function() {
@@ -57,7 +53,7 @@ function App() {
                   }
                   userArray.push({ id: i, pic: data[i].picture.large, firstName: data[i].name.first, lastName: data[i].name.last, country: data[i].location.country, flag: userFlag, age: data[i].dob.age, cat: shuffledCatArray[i].pic});
                 }
-                setSearchState({ ...searchState, userList: userArray });
+                setUserState({ ...userState, userList: userArray });
               }
             });
           }
@@ -81,11 +77,11 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="container">
       <Helmet>
         <body className="bg-dark text-light"/>
       </Helmet>
-      <UserDirectory searchState={searchState}/>
+      <UserDirectory userState={userState}/>
       <footer>
         <small> &copy; 2021 Virlym di Aunel</small>
       </footer>

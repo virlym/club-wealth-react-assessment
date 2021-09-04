@@ -12,3 +12,42 @@ footer{
   text-align: center;
   color: black;
 }
+
+h1{
+  text-align: center;
+}
+
+img{
+  width: 200px;
+  height: 200px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  text-align: center;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+#myTable tr {
+  border: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  border: 1px solid #ddd;
+}
+
+.section-head {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: black;
+}
