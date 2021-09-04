@@ -20,12 +20,11 @@ function UserDirectory(props) {
   function setTableList(search){
     const data = props.userState.userList;
     const newArray2 = [];
-    const newKey = [];
       for(let i = 0; i < data.length; i++){
         const name = `${data[i].firstName} ${data[i].lastName}`;
         if((search === "") || (name.indexOf(search) > -1)){
         newArray2.push(
-          <tr>
+          <tr key={i.toString()}>
             <td> <img src={data[i].pic} alt="pic{i}" /> </td>
             <td>{data[i].firstName}</td>
             <td>{data[i].lastName}</td>
@@ -35,14 +34,114 @@ function UserDirectory(props) {
             <td> <img src={data[i].flag} alt="flag{i}" /></td>
           </tr> 
         );
-        newKey.push(i.toString());
       }
     }
-    setSearchState({ ...searchState, tableList: {data: newArray2, key: newKey} });
+    setSearchState({ ...searchState, tableList: {data: newArray2} });
   }
 
   function sortTable(column){
-
+    let change = false;
+    // sort by id
+    if(column === "id"){
+      props.userState.userList.sort(function(b, a){
+        if(a.id < b.id) { 
+          change = true;
+          return -1; 
+        }
+        if(a.id > b.id) { 
+          return 1; 
+        }
+        return 0;
+      });
+      if(change === false){
+        props.userState.userList.sort(function(a, b){
+          if(a.id < b.id) { return -1; }
+          if(a.id > b.id) { return 1; }
+          return 0;
+        });
+      }
+    }
+    // sort by first name
+    if(column === "firstName"){
+      props.userState.userList.sort(function(b, a){
+        if(a.firstName < b.firstName) { 
+          change = true;
+          return -1; 
+        }
+        if(a.firstName > b.firstName) { 
+          return 1; 
+        }
+        return 0;
+      });
+      if(change === false){
+        props.userState.userList.sort(function(a, b){
+          if(a.firstName < b.firstName) { return -1; }
+          if(a.firstName > b.firstName) { return 1; }
+          return 0;
+        });
+      }
+    }
+    // sort by last name
+    if(column === "lastName"){
+      props.userState.userList.sort(function(b, a){
+        if(a.lastName < b.lastName) { 
+          change = true;
+          return -1; 
+        }
+        if(a.lastName > b.lastName) { 
+          return 1; 
+        }
+        return 0;
+      });
+      if(change === false){
+        props.userState.userList.sort(function(a, b){
+          if(a.lastName < b.lastName) { return -1; }
+          if(a.lastName > b.lastName) { return 1; }
+          return 0;
+        });
+      }
+    }
+    // sort by age
+    if(column === "age"){
+      props.userState.userList.sort(function(b, a){
+        if(a.age < b.age) { 
+          change = true;
+          return -1; 
+        }
+        if(a.age > b.age) { 
+          return 1; 
+        }
+        return 0;
+      });
+      if(change === false){
+        props.userState.userList.sort(function(a, b){
+          if(a.age < b.age) { return -1; }
+          if(a.age > b.age) { return 1; }
+          return 0;
+        });
+      }
+    }
+    // sort by country
+    if(column === "country"){
+      props.userState.userList.sort(function(b, a){
+        if(a.country < b.country) { 
+          change = true;
+          return -1; 
+        }
+        if(a.country > b.country) { 
+          return 1; 
+        }
+        return 0;
+      });
+      if(change === false){
+        props.userState.userList.sort(function(a, b){
+          if(a.country < b.country) { return -1; }
+          if(a.country > b.country) { return 1; }
+          return 0;
+        });
+      }
+    }
+    setTableList(searchState.searchTerm);
   }
 
   return (

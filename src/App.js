@@ -20,7 +20,6 @@ function App() {
   function searchAPIs(){
     CountryAPI.getCountries().then(function(response){
       if(response){
-        console.log("country");
         const data = response.data;
         const countryArray = [];
         for(let i = 0; i < data.length; i++){
@@ -29,7 +28,6 @@ function App() {
 
         CatAPI.get100Cats().then(function(response){
           if(response){
-            console.log("cats");
             const data = response.data;
             let catArray = [];
             for(let i = 0; i < data.length; i++){
@@ -39,7 +37,6 @@ function App() {
 
             UserAPI.getRandomUserNames().then(function(response){
               if(response){
-                console.log("users");
                 const data = response.data.results;
                 const userArray = [];
                 for(let i = 0; i < data.length; i++){
