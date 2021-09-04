@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
 function UserDirectory() {
+  const [searchState, setSearchState] = useState({
+    searchTerm: "",
+    userList: [],
+    tableList: [],
+    sortedTable: [],
+    filteredTable: []
+  });
+
+  useEffect(function() {
+    searchAPIs();
+  });
+
+  function searchAPIs(){
+
+  }
 
   return (
     <div>
