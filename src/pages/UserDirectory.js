@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import UserAPI from "../APIs/user.js";
+import CountryAPI from "../APIs/countries.js";
+import CatAPI from "../APIs/cats.js";
 
-function UserDirectory() {
-  const [searchState, setSearchState] = useState({
-    searchTerm: "",
-    userList: [],
-    tableList: [],
-    sortedTable: [],
-    filteredTable: []
-  });
-
-  useEffect(function() {
-    searchAPIs();
-  });
-
-  function searchAPIs(){
-
-  }
+function UserDirectory(props) {
 
   return (
     <div>
